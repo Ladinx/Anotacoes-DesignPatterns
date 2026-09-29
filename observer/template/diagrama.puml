@@ -1,0 +1,58 @@
+@startuml observer (template)
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+abstract class Assunto {
+  - observadores : List
+  + assinar(Observador observador) : void
+  + cancelar(Observador observador) : void
+  + notificarTodos(Evento evento) : void
+}
+class AssuntoConcreto {
+  + publicar(Evento evento) : void
+}
+interface Evento {
+  + descrever() : String {abstract}
+}
+class Evento1 <<record>> {
+  - campo1 : String
+  + descrever() : String
+}
+class Evento2 <<record>> {
+  - campo1 : String
+  - campo2 : String
+  + descrever() : String
+}
+class Main {
+  + main(String[] args) : void
+}
+interface Observador {
+  + notificar(Evento evento) : void {abstract}
+}
+class ObservadorA {
+  + notificar(Evento evento) : void
+}
+class ObservadorB {
+  + notificar(Evento evento) : void
+}
+
+Assunto o-- "*" Observador
+AssuntoConcreto --|> Assunto
+Evento1 ..|> Evento
+Evento2 ..|> Evento
+Main ..> AssuntoConcreto : <<instancia>>
+Main ..> Evento1 : <<instancia>>
+Main ..> Evento2 : <<instancia>>
+Main ..> ObservadorA : <<instancia>>
+Main ..> ObservadorB : <<instancia>>
+ObservadorA ..|> Observador
+ObservadorB ..|> Observador
+
+legend right
+  | linha contínua | herança e associação |
+  | tracejado | dependência e instanciação |
+  | multiplicidade | quantidade de referências |
+endlegend
+@enduml

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="764" height="1195" viewBox="0 0 764 1195" font-family="Helvetica,Arial,sans-serif">
+<defs>
+<marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+<path d="M0,1 L9,5 L0,9" fill="none" stroke="#37474F" stroke-width="1.3"/></marker>
+<marker id="triangulo" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
+<path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#37474F" stroke-width="1.3"/></marker>
+<marker id="losango" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+<path d="M6,1 L11,6 L6,11 L1,6 z" fill="#ffffff" stroke="#37474F" stroke-width="1.3"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="24" y="24" font-size="15" font-weight="600" fill="#1a202c">abstract-factory (template)</text>
+<path d="M 230,71 L 446,78" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="338" y="70" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<path d="M 237,190 L 446,78" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 237,190 C 263,190 263,657 193,657" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,190 C 263,190 263,865 193,865" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,309 L 446,78" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 237,309 C 263,309 263,761 193,761" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,309 C 263,309 263,969 193,969" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,553 C 263,553 263,71 230,71" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 193,657 L 446,203" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 193,761 L 446,203" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 193,865 L 446,321" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 193,969 L 446,321" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 376,1073 C 402,1073 402,190 237,190" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 376,1073 C 402,1073 402,309 237,309" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<g><rect x="24" y="34" width="206" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,64 L 230,64" stroke="#37474F" stroke-width="1"/>
+<text x="127" y="54" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Aplicacao</text>
+<text x="34" y="79" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- fabrica : FabricaAbstrata</text>
+<text x="34" y="94" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ executar() : void</text>
+</g>
+<g><rect x="446" y="34" width="294" height="88" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 446,78 L 740,78" stroke="#37474F" stroke-width="1"/>
+<text x="593" y="49" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="593" y="68" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">FabricaAbstrata</text>
+<text x="456" y="93" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto1() : Produto1 {abstract}</text>
+<text x="456" y="108" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto2() : Produto2 {abstract}</text>
+</g>
+<g><rect x="24" y="153" width="213" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,183 L 237,183" stroke="#37474F" stroke-width="1"/>
+<text x="130" y="173" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">FabricaDaFamiliaA</text>
+<text x="34" y="198" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto1() : Produto1</text>
+<text x="34" y="213" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto2() : Produto2</text>
+</g>
+<g><rect x="24" y="272" width="213" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,302 L 237,302" stroke="#37474F" stroke-width="1"/>
+<text x="130" y="292" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">FabricaDaFamiliaB</text>
+<text x="34" y="317" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto1() : Produto1</text>
+<text x="34" y="332" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ criarProduto2() : Produto2</text>
+</g>
+<g><rect x="24" y="391" width="80" height="88" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 24,435 L 104,435" stroke="#37474F" stroke-width="1"/>
+<text x="64" y="406" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«enum»</text>
+<text x="64" y="425" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Familia</text>
+<text x="34" y="450" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238"> A</text>
+<text x="34" y="465" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238"> B</text>
+</g>
+<g><rect x="24" y="524" width="213" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,554 L 237,554" stroke="#37474F" stroke-width="1"/>
+<text x="130" y="544" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Main</text>
+<text x="34" y="569" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ main(String[] args) : void</text>
+</g>
+<g><rect x="446" y="167" width="228" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 446,211 L 674,211" stroke="#37474F" stroke-width="1"/>
+<text x="560" y="182" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="560" y="201" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto1</text>
+<text x="456" y="226" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ executar() : void {abstract}</text>
+</g>
+<g><rect x="24" y="628" width="169" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,658 L 193,658" stroke="#37474F" stroke-width="1"/>
+<text x="108" y="648" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto1DaFamiliaA</text>
+<text x="34" y="673" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ executar() : void</text>
+</g>
+<g><rect x="24" y="732" width="169" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,762 L 193,762" stroke="#37474F" stroke-width="1"/>
+<text x="108" y="752" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto1DaFamiliaB</text>
+<text x="34" y="777" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ executar() : void</text>
+</g>
+<g><rect x="446" y="285" width="228" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 446,329 L 674,329" stroke="#37474F" stroke-width="1"/>
+<text x="560" y="300" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="560" y="319" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto2</text>
+<text x="456" y="344" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ resumo() : String {abstract}</text>
+</g>
+<g><rect x="24" y="836" width="169" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,866 L 193,866" stroke="#37474F" stroke-width="1"/>
+<text x="108" y="856" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto2DaFamiliaA</text>
+<text x="34" y="881" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ resumo() : String</text>
+</g>
+<g><rect x="24" y="940" width="169" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,970 L 193,970" stroke="#37474F" stroke-width="1"/>
+<text x="108" y="960" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Produto2DaFamiliaB</text>
+<text x="34" y="985" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ resumo() : String</text>
+</g>
+<g><rect x="24" y="1044" width="352" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,1074 L 376,1074" stroke="#37474F" stroke-width="1"/>
+<text x="200" y="1064" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">SeletorDeFabricas</text>
+<text x="34" y="1089" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ porFamilia(Familia familia) : FabricaAbstrata</text>
+</g>
+<text x="24" y="1127" font-size="11" fill="#607d8b">heranca / realizacao : classe, interface</text>
+<text x="24" y="1145" font-size="11" fill="#607d8b">associacao / composicao : campo, com multiplicidade</text>
+<text x="24" y="1163" font-size="11" fill="#607d8b">dependencia / instancia : tracejado, seta aberta</text>
+</svg>

@@ -1,0 +1,108 @@
+@startuml solid (template)
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Item <<record>> {
+  - nome : String
+  - quantidade : int
+  - precoUnitario : double
+  + total() : double
+}
+class Main {
+  + main(String[] args) : void
+}
+interface NotificadorA {
+  + enviarA(String mensagem) : void {abstract}
+}
+interface NotificadorB {
+  + enviarB(String mensagem) : void {abstract}
+}
+interface Pagamento {
+  + pagar(double valor) : void {abstract}
+}
+class PagamentoA {
+  + pagar(double valor) : void
+  + reembolsar(double valor) : void
+}
+class PagamentoB {
+  + pagar(double valor) : void
+  + reembolsar(double valor) : void
+}
+class PagamentoC {
+  + pagar(double valor) : void
+}
+interface PagamentoReembolsavel {
+  + reembolsar(double valor) : void {abstract}
+}
+class Pedido <<record>> {
+  - cliente : String
+  - itens : List
+  - regra : Regra
+  + bruto() : double
+  + total() : double
+}
+interface Regra {
+  + aplicar(double total) : double {abstract}
+}
+class RegraNenhuma {
+  + aplicar(double total) : double
+}
+class RegraPercentual {
+  - percentual : double
+  + aplicar(double total) : double
+}
+class RegraValorFixo {
+  - valor : double
+  + aplicar(double total) : double
+}
+class ServicoNotificadorA {
+  + enviarA(String mensagem) : void
+}
+class ServicoNotificadorB {
+  + enviarB(String mensagem) : void
+}
+class ServicoOperacao {
+  - pagamento : Pagamento
+  - validador : Validador
+  - notificadorA : NotificadorA
+  - notificadorB : NotificadorB
+  + executar(Pedido pedido) : boolean
+}
+class Validador {
+  + erros(Pedido pedido) : List
+}
+
+Main ..> Item : <<instancia>>
+Main ..> PagamentoA : <<instancia>>
+Main ..> PagamentoB : <<instancia>>
+Main ..> PagamentoC : <<instancia>>
+Main ..> Pedido : <<instancia>>
+Main ..> RegraPercentual : <<instancia>>
+Main ..> ServicoNotificadorA : <<instancia>>
+Main ..> ServicoNotificadorB : <<instancia>>
+Main ..> ServicoOperacao : <<instancia>>
+Main ..> Validador : <<instancia>>
+PagamentoA ..|> PagamentoReembolsavel
+PagamentoB ..|> PagamentoReembolsavel
+PagamentoC ..|> Pagamento
+PagamentoReembolsavel ..|> Pagamento
+Pedido o-- "*" Item
+Pedido --> "1" Regra
+RegraNenhuma ..|> Regra
+RegraPercentual ..|> Regra
+RegraValorFixo ..|> Regra
+ServicoNotificadorA ..|> NotificadorA
+ServicoNotificadorB ..|> NotificadorB
+ServicoOperacao --> "1" Pagamento
+ServicoOperacao --> "1" Validador
+ServicoOperacao --> "1" NotificadorA
+ServicoOperacao --> "1" NotificadorB
+
+legend right
+  | linha contínua | herança e associação |
+  | tracejado | dependência e instanciação |
+  | multiplicidade | quantidade de referências |
+endlegend
+@enduml

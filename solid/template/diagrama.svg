@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1076" height="1419" viewBox="0 0 1076 1419" font-family="Helvetica,Arial,sans-serif">
+<defs>
+<marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+<path d="M0,1 L9,5 L0,9" fill="none" stroke="#37474F" stroke-width="1.3"/></marker>
+<marker id="triangulo" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
+<path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#37474F" stroke-width="1.3"/></marker>
+<marker id="losango" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+<path d="M6,1 L11,6 L6,11 L1,6 z" fill="#ffffff" stroke="#37474F" stroke-width="1.3"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="24" y="24" font-size="15" font-weight="600" fill="#1a202c">solid (template)</text>
+<path d="M 237,63 L 358,93" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 300,63 300,175 274,175" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 300,63 300,294 274,294" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 263,63 263,405 237,405" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 263,63 263,546 164,546" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 293,63 293,799 267,799" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 300,63 300,1029 274,1029" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 300,63 300,1133 274,1133" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 C 314,63 314,1267 288,1267" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 237,63 L 358,698" fill="none" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#seta)"/>
+<path d="M 274,175 L 358,469" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 274,294 L 358,469" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 237,405 L 758,70" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 688,469 L 758,70" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 164,546 L 358,93" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#losango)"/>
+<text x="261" y="314" font-size="10" fill="#455a64" text-anchor="middle">*</text>
+<path d="M 164,546 L 358,587" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="261" y="562" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<path d="M 267,687 L 358,587" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 267,799 L 358,587" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 267,918 L 358,587" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 274,1029 L 358,233" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 274,1133 L 358,351" fill="none" stroke="#37474F" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#triangulo)"/>
+<path d="M 288,1267 L 758,70" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="523" y="664" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<path d="M 288,1267 L 358,698" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="323" y="978" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<path d="M 288,1267 L 358,233" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="323" y="745" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<path d="M 288,1267 L 358,351" fill="none" stroke="#37474F" stroke-width="1.3" marker-end="url(#seta)"/>
+<text x="323" y="804" font-size="10" fill="#455a64" text-anchor="middle">1</text>
+<g><rect x="358" y="34" width="184" height="118" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 358,78 L 542,78" stroke="#37474F" stroke-width="1"/>
+<text x="450" y="49" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«record»</text>
+<text x="450" y="68" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Item</text>
+<text x="368" y="93" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- nome : String</text>
+<text x="368" y="108" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- quantidade : int</text>
+<text x="368" y="123" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- precoUnitario : double</text>
+<text x="368" y="138" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ total() : double</text>
+</g>
+<g><rect x="24" y="34" width="213" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,64 L 237,64" stroke="#37474F" stroke-width="1"/>
+<text x="130" y="54" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Main</text>
+<text x="34" y="79" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ main(String[] args) : void</text>
+</g>
+<g><rect x="358" y="197" width="330" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 358,241 L 688,241" stroke="#37474F" stroke-width="1"/>
+<text x="523" y="212" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="523" y="231" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">NotificadorA</text>
+<text x="368" y="256" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ enviarA(String mensagem) : void {abstract}</text>
+</g>
+<g><rect x="358" y="315" width="330" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 358,359 L 688,359" stroke="#37474F" stroke-width="1"/>
+<text x="523" y="330" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="523" y="349" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">NotificadorB</text>
+<text x="368" y="374" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ enviarB(String mensagem) : void {abstract}</text>
+</g>
+<g><rect x="758" y="34" width="294" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 758,78 L 1052,78" stroke="#37474F" stroke-width="1"/>
+<text x="905" y="49" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="905" y="68" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Pagamento</text>
+<text x="768" y="93" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ pagar(double valor) : void {abstract}</text>
+</g>
+<g><rect x="24" y="138" width="250" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,168 L 274,168" stroke="#37474F" stroke-width="1"/>
+<text x="149" y="158" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">PagamentoA</text>
+<text x="34" y="183" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ pagar(double valor) : void</text>
+<text x="34" y="198" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ reembolsar(double valor) : void</text>
+</g>
+<g><rect x="24" y="257" width="250" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,287 L 274,287" stroke="#37474F" stroke-width="1"/>
+<text x="149" y="277" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">PagamentoB</text>
+<text x="34" y="302" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ pagar(double valor) : void</text>
+<text x="34" y="317" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ reembolsar(double valor) : void</text>
+</g>
+<g><rect x="24" y="376" width="213" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,406 L 237,406" stroke="#37474F" stroke-width="1"/>
+<text x="130" y="396" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">PagamentoC</text>
+<text x="34" y="421" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ pagar(double valor) : void</text>
+</g>
+<g><rect x="358" y="433" width="330" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 358,477 L 688,477" stroke="#37474F" stroke-width="1"/>
+<text x="523" y="448" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="523" y="467" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">PagamentoReembolsavel</text>
+<text x="368" y="492" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ reembolsar(double valor) : void {abstract}</text>
+</g>
+<g><rect x="24" y="480" width="140" height="133" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,524 L 164,524" stroke="#37474F" stroke-width="1"/>
+<text x="94" y="495" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«record»</text>
+<text x="94" y="514" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Pedido</text>
+<text x="34" y="539" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- cliente : String</text>
+<text x="34" y="554" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- itens : List</text>
+<text x="34" y="569" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- regra : Regra</text>
+<text x="34" y="584" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ bruto() : double</text>
+<text x="34" y="599" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ total() : double</text>
+</g>
+<g><rect x="358" y="551" width="323" height="73" rx="6" ry="6" fill="#eef1f5" stroke="#37474F" stroke-width="1.3"/><path d="M 358,595 L 681,595" stroke="#37474F" stroke-width="1"/>
+<text x="520" y="566" font-size="10" fill="#546e7a" text-anchor="middle" font-style="italic">«interface»</text>
+<text x="520" y="585" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Regra</text>
+<text x="368" y="610" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ aplicar(double total) : double {abstract}</text>
+</g>
+<g><rect x="24" y="658" width="243" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,688 L 267,688" stroke="#37474F" stroke-width="1"/>
+<text x="146" y="678" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">RegraNenhuma</text>
+<text x="34" y="703" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ aplicar(double total) : double</text>
+</g>
+<g><rect x="24" y="762" width="243" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,792 L 267,792" stroke="#37474F" stroke-width="1"/>
+<text x="146" y="782" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">RegraPercentual</text>
+<text x="34" y="807" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- percentual : double</text>
+<text x="34" y="822" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ aplicar(double total) : double</text>
+</g>
+<g><rect x="24" y="881" width="243" height="74" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,911 L 267,911" stroke="#37474F" stroke-width="1"/>
+<text x="146" y="901" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">RegraValorFixo</text>
+<text x="34" y="926" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- valor : double</text>
+<text x="34" y="941" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ aplicar(double total) : double</text>
+</g>
+<g><rect x="24" y="1000" width="250" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,1030 L 274,1030" stroke="#37474F" stroke-width="1"/>
+<text x="149" y="1020" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">ServicoNotificadorA</text>
+<text x="34" y="1045" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ enviarA(String mensagem) : void</text>
+</g>
+<g><rect x="24" y="1104" width="250" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,1134 L 274,1134" stroke="#37474F" stroke-width="1"/>
+<text x="149" y="1124" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">ServicoNotificadorB</text>
+<text x="34" y="1149" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ enviarB(String mensagem) : void</text>
+</g>
+<g><rect x="24" y="1208" width="264" height="119" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 24,1238 L 288,1238" stroke="#37474F" stroke-width="1"/>
+<text x="156" y="1228" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">ServicoOperacao</text>
+<text x="34" y="1253" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- pagamento : Pagamento</text>
+<text x="34" y="1268" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- validador : Validador</text>
+<text x="34" y="1283" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- notificadorA : NotificadorA</text>
+<text x="34" y="1298" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">- notificadorB : NotificadorB</text>
+<text x="34" y="1313" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ executar(Pedido pedido) : boolean</text>
+</g>
+<g><rect x="358" y="669" width="221" height="59" rx="6" ry="6" fill="#f7f8fa" stroke="#37474F" stroke-width="1.3"/><path d="M 358,699 L 579,699" stroke="#37474F" stroke-width="1"/>
+<text x="468" y="689" font-size="13" font-weight="600" fill="#1a202c" text-anchor="middle">Validador</text>
+<text x="368" y="714" font-size="11" font-family="DejaVu Sans Mono,Consolas,monospace" fill="#263238">+ erros(Pedido pedido) : List</text>
+</g>
+<text x="24" y="1351" font-size="11" fill="#607d8b">heranca / realizacao : classe, interface</text>
+<text x="24" y="1369" font-size="11" fill="#607d8b">associacao / composicao : campo, com multiplicidade</text>
+<text x="24" y="1387" font-size="11" fill="#607d8b">dependencia / instancia : tracejado, seta aberta</text>
+</svg>

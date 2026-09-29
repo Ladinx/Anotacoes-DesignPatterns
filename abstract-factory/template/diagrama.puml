@@ -1,0 +1,72 @@
+@startuml abstract-factory (template)
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Aplicacao {
+  - fabrica : FabricaAbstrata
+  + executar() : void
+}
+interface FabricaAbstrata {
+  + criarProduto1() : Produto1 {abstract}
+  + criarProduto2() : Produto2 {abstract}
+}
+class FabricaDaFamiliaA {
+  + criarProduto1() : Produto1
+  + criarProduto2() : Produto2
+}
+class FabricaDaFamiliaB {
+  + criarProduto1() : Produto1
+  + criarProduto2() : Produto2
+}
+enum Familia {
+  A
+  B
+}
+class Main {
+  + main(String[] args) : void
+}
+interface Produto1 {
+  + executar() : void {abstract}
+}
+class Produto1DaFamiliaA {
+  + executar() : void
+}
+class Produto1DaFamiliaB {
+  + executar() : void
+}
+interface Produto2 {
+  + resumo() : String {abstract}
+}
+class Produto2DaFamiliaA {
+  + resumo() : String
+}
+class Produto2DaFamiliaB {
+  + resumo() : String
+}
+class SeletorDeFabricas {
+  + porFamilia(Familia familia) : FabricaAbstrata
+}
+
+Aplicacao --> "1" FabricaAbstrata
+FabricaDaFamiliaA ..|> FabricaAbstrata
+FabricaDaFamiliaA ..> Produto1DaFamiliaA : <<instancia>>
+FabricaDaFamiliaA ..> Produto2DaFamiliaA : <<instancia>>
+FabricaDaFamiliaB ..|> FabricaAbstrata
+FabricaDaFamiliaB ..> Produto1DaFamiliaB : <<instancia>>
+FabricaDaFamiliaB ..> Produto2DaFamiliaB : <<instancia>>
+Main ..> Aplicacao : <<instancia>>
+Produto1DaFamiliaA ..|> Produto1
+Produto1DaFamiliaB ..|> Produto1
+Produto2DaFamiliaA ..|> Produto2
+Produto2DaFamiliaB ..|> Produto2
+SeletorDeFabricas ..> FabricaDaFamiliaA : <<instancia>>
+SeletorDeFabricas ..> FabricaDaFamiliaB : <<instancia>>
+
+legend right
+  | linha contínua | herança e associação |
+  | tracejado | dependência e instanciação |
+  | multiplicidade | quantidade de referências |
+endlegend
+@enduml

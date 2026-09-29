@@ -1,0 +1,57 @@
+@startuml factory-method (template)
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Criador1 {
+  + criarProduto() : ProdutoAbstrato
+}
+class Criador2 {
+  + criarProduto() : ProdutoAbstrato
+}
+class Criador2Ajustado {
+  + preparar(ProdutoAbstrato produto) : void
+}
+abstract class CriadorAbstrato {
+  + criar() : ProdutoAbstrato
+  + criarProduto() : ProdutoAbstrato {abstract}
+  + preparar(ProdutoAbstrato produto) : void
+}
+class Main {
+  + main(String[] args) : void
+}
+class Produto1 {
+  + descricaoAdicional() : String
+}
+class Produto2 {
+  + descricaoAdicional() : String
+}
+abstract class ProdutoAbstrato {
+  - preco : double
+  + descricaoAdicional() : String {abstract}
+  + ajustarPreco(double fator) : void
+  + descrever() : String
+}
+class SeletorDeCriadores {
+  + para(String chave) : CriadorAbstrato
+  + chaves() : Iterable
+}
+
+Criador1 --|> CriadorAbstrato
+Criador1 ..> Produto1 : <<instancia>>
+Criador2 --|> CriadorAbstrato
+Criador2 ..> Produto2 : <<instancia>>
+Criador2Ajustado --|> Criador2
+Produto1 --|> ProdutoAbstrato
+Produto2 --|> ProdutoAbstrato
+SeletorDeCriadores ..> Criador1 : <<instancia>>
+SeletorDeCriadores ..> Criador2 : <<instancia>>
+SeletorDeCriadores ..> Criador2Ajustado : <<instancia>>
+
+legend right
+  | linha contínua | herança e associação |
+  | tracejado | dependência e instanciação |
+  | multiplicidade | quantidade de referências |
+endlegend
+@enduml
