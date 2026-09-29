@@ -1,0 +1,197 @@
+@startuml diagrama_abstract_factory
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class ServicoCheckout <<cliente>> {
+  - fabrica : FabricaCheckout
+  + ServicoCheckout(fabrica)
+  + finalizar(Pedido) : Relatorio
+}
+
+interface FabricaCheckout {
+  + criarDocumentoFiscal() : DocumentoFiscal
+  + criarProcessadorPagamento() : ProcessadorPagamento
+  + criarGeradorEtiqueta() : GeradorEtiqueta
+}
+
+class FabricaBrasil {
+  - usarPix : boolean
+  + criarDocumentoFiscal() = NotaFiscalEletronica
+  + criarProcessadorPagamento() = PagamentoPix ou PagamentoBoleto
+  + criarGeradorEtiqueta() = EtiquetaCorreios
+}
+
+class FabricaEstadosUnidos {
+  + criarDocumentoFiscal() = SalesInvoice
+  + criarProcessadorPagamento() = PagamentoCartao
+  + criarGeradorEtiqueta() = EtiquetaUsps
+}
+
+class FabricaAlemanha {
+  + criarDocumentoFiscal() = VatInvoice
+  + criarProcessadorPagamento() = PagamentoSepa
+  + criarGeradorEtiqueta() = EtiquetaDeutschePost
+}
+
+enum Fabricas <<seletor>> {
+  BRASIL
+  BRASIL_BOLETO
+  ESTADOS_UNIDOS
+  ALEMANHA
+  + criar() : FabricaCheckout
+  + todas() : Map
+}
+
+interface DocumentoFiscal {
+  + nome() : String
+  + emitir(Pedido) : String
+}
+
+interface ProcessadorPagamento {
+  + nome() : String
+  + processar(Pedido) : String
+}
+
+interface GeradorEtiqueta {
+  + nome() : String
+  + gerar(Pedido) : String
+}
+
+class NotaFiscalEletronica {
+  - ICMS_INTERNO = 18%
+  - ICMS_INTERESTADUAL = 12%
+  + nome() = "Nota fiscal eletrônica"
+  + emitir(Pedido) : CFOP 5.102 ou 6.102, chave de 44 dígitos
+}
+
+class SalesInvoice {
+  - ALIQUOTAS = CA 7,25% | TX 6,25% | OR isento
+  - EIN = 12-3456789
+  + nome() = "Sales invoice"
+  + emitir(Pedido) : sales tax do estado de destino
+}
+
+class VatInvoice {
+  - UST_NORMAL = 19%
+  - UST_ESSENCIAL = 7%
+  - VAT_ID = DE123456789
+  + nome() = "VAT invoice"
+  + emitir(Pedido) : Umsatzsteuer conforme essencial
+}
+
+class PagamentoPix {
+  - DESCONTO = 5%
+  + nome() = "Pix"
+  + processar(Pedido) : desconto aplicado no valor
+}
+
+class PagamentoBoleto {
+  - DIAS_COMPENSACAO = 3
+  + nome() = "Boleto"
+  + processar(Pedido) : compensação em dias úteis
+}
+
+class PagamentoCartao {
+  + nome() = "Credit card"
+  + processar(Pedido) : verificação AVS entre CEPs
+}
+
+class PagamentoSepa {
+  + nome() = "SEPA Direct Debit"
+  + processar(Pedido) : débito na conta
+}
+
+class EtiquetaCorreios {
+  + nome() = "Correios"
+  + gerar(Pedido) : CEP no formato 00000-000
+}
+
+class EtiquetaUsps {
+  + nome() = "USPS"
+  + gerar(Pedido) : ZIP+4
+}
+
+class EtiquetaDeutschePost {
+  + nome() = "Deutsche Post"
+  + gerar(Pedido) : PLZ de 5 dígitos
+}
+
+class Pedido {
+  + id() : String
+  + origem() : String
+  + destino() : String
+  + cepEntrega() : String
+  + cepCobranca() : String
+  + valor() : double
+  + essencial() : boolean
+  + interestadual() : boolean
+}
+
+class Relatorio <<record>> {
+  + pedido() : String
+  + pais() : String
+  + formatar() : String
+  + artefatos() : List<String>
+}
+
+class Moeda <<utilitario>> {
+  + brl(double) : String
+  + usd(double) : String
+  + eur(double) : String
+  + percentual(double) : String
+}
+
+FabricaCheckout <|.. FabricaBrasil
+FabricaCheckout <|.. FabricaEstadosUnidos
+FabricaCheckout <|.. FabricaAlemanha
+
+DocumentoFiscal <|.. NotaFiscalEletronica
+DocumentoFiscal <|.. SalesInvoice
+DocumentoFiscal <|.. VatInvoice
+
+ProcessadorPagamento <|.. PagamentoPix
+ProcessadorPagamento <|.. PagamentoBoleto
+ProcessadorPagamento <|.. PagamentoCartao
+ProcessadorPagamento <|.. PagamentoSepa
+
+GeradorEtiqueta <|.. EtiquetaCorreios
+GeradorEtiqueta <|.. EtiquetaUsps
+GeradorEtiqueta <|.. EtiquetaDeutschePost
+
+FabricaBrasil ..> NotaFiscalEletronica : <<instancia>>
+FabricaBrasil ..> PagamentoPix : <<instancia>>
+FabricaBrasil ..> PagamentoBoleto : <<instancia>>
+FabricaBrasil ..> EtiquetaCorreios : <<instancia>>
+
+FabricaEstadosUnidos ..> SalesInvoice : <<instancia>>
+FabricaEstadosUnidos ..> PagamentoCartao : <<instancia>>
+FabricaEstadosUnidos ..> EtiquetaUsps : <<instancia>>
+
+FabricaAlemanha ..> VatInvoice : <<instancia>>
+FabricaAlemanha ..> PagamentoSepa : <<instancia>>
+FabricaAlemanha ..> EtiquetaDeutschePost : <<instancia>>
+
+ServicoCheckout --> FabricaCheckout : injeta e consome a abstração
+ServicoCheckout ..> Relatorio : monta o relatório (RNF03)
+ServicoCheckout ..> Pedido : finalizar()
+Fabricas ..> FabricaCheckout : seleciona a família
+NotaFiscalEletronica ..> Pedido : interestadual()
+SalesInvoice ..> Pedido : destino()
+VatInvoice ..> Pedido : essencial()
+PagamentoPix ..> Pedido
+PagamentoBoleto ..> Pedido
+PagamentoCartao ..> Pedido : AVS usa cepEntrega e cepCobranca
+PagamentoSepa ..> Pedido
+EtiquetaCorreios ..> Pedido : cepEntrega()
+EtiquetaUsps ..> Pedido : cepEntrega()
+EtiquetaDeutschePost ..> Pedido : cepEntrega()
+Relatorio ..> Moeda : formata valores
+
+legend right
+  | linha contínua | implementação de interface e associação |
+  | tracejado | dependência e instanciação dentro da fábrica |
+  | Sem linha entre duas classes concretas | combinações inválidas não são escribíveis |
+endlegend
+@enduml

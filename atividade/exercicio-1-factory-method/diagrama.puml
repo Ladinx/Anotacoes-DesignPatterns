@@ -1,0 +1,137 @@
+@startuml diagrama_factory_method
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+abstract class Apolice {
+  - numeros : GeradorNumero
+  + tipo() : String
+  + premio(Contratacao) : double
+  + validar(Contratacao) : List<String>
+  + documentosExigidos(Contratacao) : List<String>
+  # prefixo() : String
+  + numero(Contratacao) : String
+  + resumo(Contratacao, numero) : String
+}
+
+class ApoliceAuto {
+  - COBERTURA_MINIMA = 50000
+  + tipo() = "Automóvel"
+  # prefixo() = "AUTO-"
+  + premio(Contratacao) : 8% do FIPE / 12, +30% se <25 anos, +20% se habilitação <2 anos
+  + validar(Contratacao) : cobertura de terceiros >= R$ 50.000,00
+  + documentosExigidos() : CNH, CRLV, comprovante de residência
+}
+
+class ApoliceResidencial {
+  + tipo() = "Residencial"
+  # prefixo() = "RES-"
+  + premio(Contratacao) : 1,5% do valor ao ano / 12, +25% se alto padrão
+  + validar(Contratacao) : escritura ou contrato de locação
+  + documentosExigidos() : escritura, comprovante de residência
+}
+
+class ApoliceVida {
+  - CAPITAL_MAXIMO_SEM_ATESTADO = 500000
+  + tipo() = "Vida"
+  # prefixo() = "VID-"
+  + premio(Contratacao) : (idade x 12) + (capital x 0,002), +50% se fumante
+  + validar(Contratacao) : atestado médico se capital > R$ 500.000,00
+  + documentosExigidos() : identidade, CPF, atestado quando aplicável
+}
+
+class ApoliceViagem {
+  + tipo() = "Viagem"
+  # prefixo() = "VIA-"
+  + premio(Contratacao) : dias x R$ 15,00, + R$ 100,00 se internacional
+  + validar(Contratacao) : se internacional, assistência >= US$ 30.000,00 e passaporte
+  + documentosExigidos() : itinerário, passaporte quando aplicável
+}
+
+abstract class CriadorApolice {
+  # numeros : GeradorNumero
+  + processar(Contratacao) : Resultado
+  # criarApolice() : Apolice
+}
+
+class CriadorApoliceAuto {
+  # criarApolice() : Apolice
+}
+class CriadorApoliceResidencial {
+  # criarApolice() : Apolice
+}
+class CriadorApoliceVida {
+  # criarApolice() : Apolice
+}
+class CriadorApoliceViagem {
+  # criarApolice() : Apolice
+}
+
+class Seguradora <<cliente>> {
+  - criadores : Map<String, CriadorApolice>
+  + registrar(tipo, CriadorApolice) : Seguradora
+  + contratar(Contratacao) : Resultado
+  + linhas() : Set<String>
+}
+
+class GeradorNumero {
+  - sequencias : Map<String, Integer>
+  + proximo(prefixo, LocalDate) : String
+  + emitidas(prefixo) : int
+}
+
+class Contratacao {
+  + tipo() : String
+  + segurado() : String
+  + idade() : int
+  + valorVeiculo() : double
+  + possuiDocumento(String) : boolean
+}
+
+class Resultado {
+  + tipo() : String
+  + emitida() : boolean
+  + numero() : String
+  + resumo() : String
+  + erros() : List<String>
+}
+
+Apolice <|-- ApoliceAuto
+Apolice <|-- ApoliceResidencial
+Apolice <|-- ApoliceVida
+Apolice <|-- ApoliceViagem
+
+CriadorApolice <|-- CriadorApoliceAuto
+CriadorApolice <|-- CriadorApoliceResidencial
+CriadorApolice <|-- CriadorApoliceVida
+CriadorApolice <|-- CriadorApoliceViagem
+
+CriadorApoliceAuto ..> ApoliceAuto : <<instancia>>
+CriadorApoliceResidencial ..> ApoliceResidencial : <<instancia>>
+CriadorApoliceVida ..> ApoliceVida : <<instancia>>
+CriadorApoliceViagem ..> ApoliceViagem : <<instancia>>
+
+ApoliceAuto -[hidden]-> Apolice
+ApoliceResidencial -[hidden]-> Apolice
+ApoliceVida -[hidden]-> Apolice
+ApoliceViagem -[hidden]-> Apolice
+
+CriadorApoliceAuto -[hidden]-> CriadorApolice
+CriadorApoliceResidencial -[hidden]-> CriadorApolice
+CriadorApoliceVida -[hidden]-> CriadorApolice
+CriadorApoliceViagem -[hidden]-> CriadorApolice
+
+CriadorApolice ..> Apolice : método fábrica e\nprocessar() só pela abstração
+Seguradora --> CriadorApolice : registra e delega
+Seguradora ..> Resultado : contratar()
+Seguradora ..> Contratacao : lê tipo()
+Apolice --> GeradorNumero : numeração (RNF02)
+Apolice ..> Contratacao : lê a contratação
+
+legend right
+  | linha contínua | herança ou associação |
+  | tracejado | dependência, método fábrica e instanciação |
+  | A | classe abstrata |
+endlegend
+@enduml
