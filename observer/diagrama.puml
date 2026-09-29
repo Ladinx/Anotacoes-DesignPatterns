@@ -1,0 +1,85 @@
+@startuml diagrama_observer
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+abstract class Assunto <<subject>> {
+  - observadores : List<Observador>
+  + assinar(Observador)
+  + cancelar(Observador)
+  + notificarTodos(Evento)
+  + totalAssinantes() : int
+}
+
+class BarramentoEventos <<concrete subject>> {
+  + publicar(Evento)
+}
+
+interface Observador <<observer>> {
+  + notificar(Evento)
+}
+
+class ObservadorAuditoria {
+  - destino : String
+  + notificar(Evento)
+}
+
+class ContadorEventos {
+  - total : int
+  + notificar(Evento)
+  + total() : int
+}
+
+class NotificadorMensagem {
+  + notificar(Evento) : reage só a MensagemRecebida
+}
+
+class "webhook (lambda)" <<observador>> {
+  + notificar(Evento)
+}
+
+interface Evento {
+  + descrever() : String
+}
+
+class MensagemRecebida <<record>> {
+  + remetente() : String
+  + texto() : String
+  + descrever() : String
+}
+
+class ArquivoLido <<record>> {
+  + caminho() : String
+  + descrever() : String
+}
+
+class Main <<demonstração>> {
+  + main(String[])
+}
+
+Assunto <|-- BarramentoEventos
+
+Observador <|.. ObservadorAuditoria
+Observador <|.. ContadorEventos
+Observador <|.. NotificadorMensagem
+Observador <|.. "webhook (lambda)"
+
+Evento <|.. MensagemRecebida
+Evento <|.. ArquivoLido
+
+Assunto o-- Observador : assinatura guardada
+Assunto ..> Evento : notificarTodos()
+Assunto ..> Observador : notificar()
+BarramentoEventos ..> Evento : publica()
+
+NotificadorMensagem ..> MensagemRecebida : instanceof
+Main ..> BarramentoEventos : assina e publica
+Main ..> Observador : cancela
+
+legend right
+  | linha contínua | implementação de interface e associação |
+  | tracejado | dependência |
+  | lista de Assunto | assinantes vivos no momento da notificação |
+endlegend
+@enduml

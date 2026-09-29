@@ -1,5 +1,13 @@
 # SOLID
 
+## Diagrama de classes
+
+![diagrama de classes do SOLID](diagrama.png)
+
+Fonte editável em `diagrama.puml` (PlantUML).
+
+## Os princípios
+
 Os princípios não têm estrutura fixa como os padrões GoF. Aqui eles aparecem num fluxo só, o checkout
 de um pedido numa loja. A loja valida o pedido, aplica desconto, cobra por boleto, cartão ou pix e
 avisa o cliente por e-mail e SMS.

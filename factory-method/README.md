@@ -1,5 +1,11 @@
 # Factory Method
 
+## Diagrama de classes
+
+![diagrama de classes do Factory Method](diagrama.png)
+
+Fonte editável em `diagrama.puml` (PlantUML).
+
 ## Como funciona
 
 A classe base declara um método de fábrica abstrato, e cada subclasse devolve o seu produto concreto.

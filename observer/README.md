@@ -1,5 +1,11 @@
 # Observer
 
+## Diagrama de classes
+
+![diagrama de classes do Observer](diagrama.png)
+
+Fonte editável em `diagrama.puml` (PlantUML).
+
 ## Como funciona
 
 O Subject mantém a lista de observadores. A cada evento ele percorre essa lista e chama o método de

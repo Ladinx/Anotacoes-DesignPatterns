@@ -1,5 +1,11 @@
 # Abstract Factory
 
+## Diagrama de classes
+
+![diagrama de classes do Abstract Factory](diagrama.png)
+
+Fonte editável em `diagrama.puml` (PlantUML).
+
 ## Como funciona
 
 A fábrica expõe um método por produto da família e entrega implementações da mesma variante em todos

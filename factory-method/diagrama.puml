@@ -1,0 +1,74 @@
+@startuml diagrama_factory_method
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+abstract class Produto <<product>> {
+  - preco : double
+  - comCupom : boolean
+  # Produto(preco)
+  + nome() : String
+  + aplicarCupom(valor)
+  + preco() : double
+  + descrever() : String
+}
+
+class Livro {
+  + nome() = "livro"
+  + preco() = 49.90
+}
+
+class Jogo {
+  + nome() = "jogo"
+  + preco() = 199.90
+}
+
+abstract class Criador <<creator>> {
+  + criar() : Produto
+  # criarProduto() : Produto
+  # preparar(Produto)
+}
+
+class CriadorLivro {
+  # criarProduto() = new Livro()
+}
+
+class CriadorJogo {
+  # criarProduto() = new Jogo()
+}
+
+class CriadorJogoPromocional {
+  # preparar(Produto) : imprime e aplica cupom de 50
+}
+
+class FabricaCriadores <<seletor>> {
+  - REGISTRO : Map<String, Criador>
+  + para(tipo) : Criador
+}
+
+class Main <<demonstração>> {
+  + main(String[])
+}
+
+Produto <|-- Livro
+Produto <|-- Jogo
+
+Criador <|-- CriadorLivro
+Criador <|-- CriadorJogo
+CriadorJogo <|-- CriadorJogoPromocional
+
+CriadorLivro ..> Livro : <<instancia>>
+CriadorJogo ..> Jogo : <<instancia>>
+CriadorJogoPromocional ..> Produto : aplicarCupom(50)
+
+Criador ..> Produto : cria() e preparar()\nsó pela abstração
+FabricaCriadores ..> Criador : registro chave -> creator
+Main ..> FabricaCriadores : para(tipo)
+Main ..> Produto : descrever()
+
+legend right
+  | linha contínua | herança |
+  | tracejado | dependência e instanciação dentro do creator |
+  | método final | sequência fixa: criarProduto() e depois preparar() |
+endlegend
+@enduml

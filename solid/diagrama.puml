@@ -1,0 +1,113 @@
+@startuml diagrama_solid
+skinparam backgroundColor transparent
+skinparam nodesep 60
+skinparam ranksep 60
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class CheckoutService <<D, alto nível>> {
+  - pagamento : Pagamento
+  - validador : Validador
+  - email : NotificadorEmail
+  - sms : NotificadorSms
+  + CheckoutService(pagamento, validador, email, sms)
+  + finalizar(Pedido) : boolean
+}
+
+class Validador <<S>> {
+  + erros(Pedido) : List<String>
+}
+
+class Pedido <<record>> {
+  + cliente() : String
+  + itens() : List<Item>
+  + desconto() : Desconto
+  + bruto() : double
+  + total() : double
+}
+
+class Item <<record>> {
+  + nome() : String
+  + quantidade() : int
+  + precoUnitario() : double
+  + total() : double
+}
+
+interface Desconto <<O>> {
+  + aplicar(double) : double
+}
+
+class SemDesconto <<O>>
+class DescontoPercentual <<O>>
+class DescontoFixo <<O>>
+
+interface Pagamento <<L, D>> {
+  + pagar(double)
+}
+
+interface PagamentoReembolsavel <<L>> {
+  + reembolsar(double)
+}
+
+class PagamentoBoleto <<L>>
+class PagamentoCartao <<L>>
+class PagamentoPix <<L>>
+
+interface NotificadorEmail <<I>> {
+  + email(String)
+}
+
+interface NotificadorSms <<I>> {
+  + sms(String)
+}
+
+class ServicoEmail <<I>>
+class ServicoSms <<I>>
+
+class Main <<composição>> {
+  + main(String[])
+}
+
+Desconto <|.. SemDesconto
+Desconto <|.. DescontoPercentual
+Desconto <|.. DescontoFixo
+
+Pagamento <|-- PagamentoReembolsavel
+PagamentoReembolsavel <|.. PagamentoBoleto
+PagamentoReembolsavel <|.. PagamentoCartao
+Pagamento <|.. PagamentoPix
+
+NotificadorEmail <|.. ServicoEmail
+NotificadorSms <|.. ServicoSms
+
+Pedido --> Item : itens()
+Pedido --> Desconto : desconto()
+Validador ..> Pedido : erros()
+Validador ..> Item : percorre para validar
+CheckoutService ..> Pedido : finalizar()
+CheckoutService ..> Validador : valida
+
+CheckoutService --> Pagamento : injeta a abstração
+CheckoutService --> NotificadorEmail : injeta a abstração
+CheckoutService --> NotificadorSms : injeta a abstração
+CheckoutService ..> Pagamento : pagar()
+CheckoutService ..> NotificadorEmail : email()
+CheckoutService ..> NotificadorSms : sms()
+
+Main ..> PagamentoBoleto : <<instancia>>
+Main ..> PagamentoCartao : <<instancia>>
+Main ..> PagamentoPix : <<instancia>>
+Main ..> ServicoEmail : <<instancia>>
+Main ..> ServicoSms : <<instancia>>
+Main ..> Validador : <<instancia>>
+Main ..> CheckoutService : monta com abstrações
+Main ..> PagamentoReembolsavel : instanceof antes de reembolsar
+
+legend right
+  | etiqueta S | classe com uma responsabilidade |
+  | etiqueta O | interface aberta a novas regras |
+  | etiqueta L | herança que cumpre o contrato do pai |
+  | etiqueta I | interface com um método só |
+  | etiqueta D | dependência de abstrações, injetadas |
+endlegend
+@enduml

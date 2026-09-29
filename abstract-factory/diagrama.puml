@@ -1,0 +1,82 @@
+@startuml diagrama_abstract_factory
+left to right direction
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Aplicacao <<cliente>> {
+  - fabrica : FabricaUi
+  + Aplicacao(fabrica)
+  + desenhar()
+}
+
+interface FabricaUi <<abstract factory>> {
+  + criarBotao() : Botao
+  + criarCaixa() : Caixa
+}
+
+class FabricaUiClara {
+  + criarBotao() = new BotaoClaro()
+  + criarCaixa() = new CaixaClara()
+}
+
+class FabricaUiEscura {
+  + criarBotao() = new BotaoEscuro()
+  + criarCaixa() = new CaixaEscura()
+}
+
+enum Tema {
+  CLARO
+  ESCURO
+}
+
+class FabricaUis <<seletor>> {
+  + porTema(Tema) : FabricaUi
+}
+
+interface Botao <<product>> {
+  + pintar()
+}
+
+interface Caixa <<product>> {
+  + pintar()
+}
+
+class BotaoClaro
+class BotaoEscuro
+class CaixaClara
+class CaixaEscura
+
+class Main <<demonstração>> {
+  + main(String[])
+}
+
+FabricaUi <|.. FabricaUiClara
+FabricaUi <|.. FabricaUiEscura
+
+Botao <|.. BotaoClaro
+Botao <|.. BotaoEscuro
+Caixa <|.. CaixaClara
+Caixa <|.. CaixaEscura
+
+FabricaUiClara ..> BotaoClaro : <<instancia>>
+FabricaUiClara ..> CaixaClara : <<instancia>>
+FabricaUiEscura ..> BotaoEscuro : <<instancia>>
+FabricaUiEscura ..> CaixaEscura : <<instancia>>
+
+Aplicacao --> FabricaUi : injeta e consome a abstração
+Aplicacao ..> Botao : pintar()
+Aplicacao ..> Caixa : pintar()
+FabricaUis ..> FabricaUiClara : <<instancia>>
+FabricaUis ..> FabricaUiEscura : <<instancia>>
+FabricaUis ..> Tema : switch exaustivo
+Main ..> Tema : itera values()
+Main ..> FabricaUis : porTema(tema)
+Main ..> Aplicacao : constrói com a fábrica escolhida
+
+legend right
+  | linha contínua | implementação de interface e associação |
+  | tracejado | dependência e instanciação |
+  | Sem linha entre duas classes concretas | botao claro com caixa escura não é escribível |
+endlegend
+@enduml
